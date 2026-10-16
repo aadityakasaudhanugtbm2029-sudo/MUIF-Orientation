@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MUIF Orientation - RSVP</title>
+<meta name="theme-color" content="#02120a">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Mozilla+Headline:wdth,wght@75..100,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<canvas id="pop" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="bar">
+  <div class="brand"><b>MUIF</b><span>Masters' Union Investment Fund</span></div>
+  <div class="pill seatpill" id="seats" hidden><b id="seatNum">-</b> seats left</div>
+  <div class="pill">Mentors &amp; associates</div>
+</header>
+
+<main>
+  <div class="stage">
+    <svg class="monstera" viewBox="-70 -120 140 240" aria-hidden="true">
+      <path d="M0 118C-66 70-72-50 0-118 72-50 66 70 0 118Z" fill="#1f8a55"/>
+      <path d="M0 112V-104" stroke="#02120a" stroke-width="3" fill="none" opacity=".6"/>
+      <g stroke="#02120a" stroke-width="8" stroke-linecap="round" fill="none">
+        <path d="M-4-62L-50-80M4-62L50-80M-4-20L-62-36M4-20L62-36M-4 24L-60 12M4 24L60 12M-4 64L-46 58M4 64L46 58"/>
+      </g>
+    </svg>
+
+    <section class="card" id="formCard">
+      <div class="chead"><span class="mark">MUIF</span><ul id="meta" class="meta"></ul></div>
+      <div class="segs" id="segs"><i></i><i></i><i></i><i></i><i></i></div>
+      <form id="form" novalidate autocomplete="on">
+        <div class="step active" data-step="0">
+          <h2><em>You're invited.</em> What name goes on your ticket?</h2>
+          <label class="sr" for="name">Full name</label>
+          <input id="name" name="name" placeholder="Your full name" autocomplete="name">
+        </div>
+        <div class="step" data-step="1">
+          <h2><em>Your Masters' Union email.</em> One ticket per MU ID.</h2>
+          <label class="sr" for="email">MU email</label>
+          <input id="email" name="email" type="email" inputmode="email" placeholder="you@mastersunion.org" autocomplete="email">
+        </div>
+        <div class="step" data-step="2">
+          <h2><em>Where can we reach you?</em> Your 10 digit phone number.</h2>
+          <label class="sr" for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" inputmode="numeric" placeholder="10 digit mobile" maxlength="14" autocomplete="tel">
+        </div>
+        <div class="step" data-step="3">
+          <h2><em>Which batch</em> are you in?</h2>
+          <div class="opts" id="batch">
+            <button type="button" data-v="2028"><span>1</span>Batch of 2028</button>
+            <button type="button" data-v="2029"><span>2</span>Batch of 2029</button>
+            <button type="button" data-v="2030"><span>3</span>Batch of 2030</button>
+          </div>
+        </div>
+        <div class="step" data-step="4">
+          <h2><em>All set.</em> Hold to lock in your spot.</h2>
+          <button type="button" id="hold" class="hold"><span class="fill"></span><em>Hold to enter</em></button>
+        </div>
+        <p class="err" id="err" role="alert"></p>
+        <div class="nav">
+          <button type="button" id="back" class="ghost" hidden>Back</button>
+          <span class="kbd" id="kbd">Press <kbd>Enter</kbd> &crarr;</span>
+          <button type="button" id="next" class="go">Next <svg viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card ticketcard" id="ticket" hidden>
+      <h2><em>You're in.</em> <span id="tNote2">See you in the canopy.</span></h2>
+      <div class="tk">
+        <div class="tkmain">
+          <div class="tkrow"><span class="admit">Admit 1</span><span class="mark">MUIF</span></div>
+          <p class="lbl">Guest</p>
+          <p class="tname" id="tName"></p>
+          <p class="ev" id="tEvent"></p>
+          <dl>
+            <div><dt>Date</dt><dd id="tDate"></dd></div>
+            <div><dt>Time</dt><dd id="tTime"></dd></div>
+            <div id="tVenueRow"><dt>Venue</dt><dd id="tVenue"></dd></div>
+          </dl>
+        </div>
+        <div class="tkstub"><span class="tid" id="tId"></span><div class="bars" id="bars"></div></div>
+      </div>
+      <p class="hint" id="tNote"></p>
+      <div class="actions">
+        <button id="cal" class="go">Add to calendar</button>
+        <button id="share" class="ghost">Share</button>
+        <button id="edit" class="ghost">Edit my RSVP</button>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body></html>
